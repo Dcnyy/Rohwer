@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohwer - Venta de Sillas de Oficina</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            padding-bottom: 100px; /* Ajuste para el footer */
+            background-color: #f1f1f1; /* Color de fondo gris */
+        }
+        header {
+            background-color: #222; /* Color de fondo negro */
+            color: #ffa500; /* Texto naranja */
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444; /* Color de fondo gris oscuro */
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #ffa500; /* Texto naranja */
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Distribución flexible */
+            gap: 10px;
+        }
+        .product, .offer {
+            background-color: #fff; /* Fondo blanco */
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+        .product img, .offer img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Centrado horizontal */
+        }
+        .offer-container {
+            display: flex;
+            justify-content: center; /* Centrado horizontal */
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .offer-container img {
+            width: 70%; /* Ajuste al 100% para ocupar todo el contenedor */
+            height: auto;
+            transition: transform 0.5s ease; /* Transición suave */
+        }
+        .offer-content {
+            position: relative;
+            z-index: 1;
+        }
+        .cover {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #222; /* Color de fondo negro */
+            color: #ffa500; /* Texto naranja */
+        }
+        .cover img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cover-text {
+            position: relative;
+            z-index: 1;
+        }
+        footer {
+            background-color: #222; /* Color de fondo negro */
+            color: #ffa500; /* Texto naranja */
+            text-align: center;
+            padding: 1px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .slide-button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #444; /* Color de fondo gris oscuro */
+            color: #ffa500; /* Texto naranja */
+            border: none;
+            cursor: pointer;
+        }
+        .slide-button:hover {
+            background-color: #666; /* Color de fondo gris más oscuro */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rohwer - Venta de Sillas de Oficina</h1>
+    </header>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Catálogo</a>
+        <a href="#">Contacto</a>
+    </nav>
+    <div class="cover">
+        <img src="cover.jpg.png" alt="Portada">
+        <div class="cover-text">
+        </div>
+    </div>
+    <div class="container">
+        <h2>Ofertas del Mes</h2>
+        <div class="offer">
+            <div class="offer-container">
+                <img src="oferta2.jpg.png" alt="Oferta 1" class="active"> <!-- Añade la clase "active" a la primera imagen -->
+            </div>
+            <div class="button-container">
+                <button class="slide-button" onclick="prevSlide()">Anterior</button>
+                <button class="slide-button" onclick="nextSlide()">Siguiente</button>
+            </div>
+        </div>
+        <h2>Nuestro Catálogo</h2>
+        <div class="main-content">
+            <div class="product">
+                <img src="silla1.jpg.jpg" alt="Silla de Oficina 1">
+                <h3>Silla Ergonómica</h3>
+                <p>Precio: $199</p>
+                <button>Agregar al carrito</button>
+            </div>
+            <div class="product">
+                <img src="silla2.jpg.jpg" alt="Silla de Oficina 2">
+                <h3>Silla Ejecutiva</h3>
+                <p>Precio: $249</p>
+                <button>Agregar al carrito</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Rohwer - Venta de Sillas de Oficina. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.offer-container img');
+        
+        function prevSlide() {
+            slides[currentSlide].style.transform = 'translateX(100%)'; // Mueve la imagen actual fuera de la vista
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            slides[currentSlide].style.transform = 'translateX(0)'; // Muestra la imagen anterior
+        }
+        
+        function nextSlide() {
+            slides[currentSlide].style.transform = 'translateX(-100%)'; // Mueve la imagen actual fuera de la vista
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.transform = 'translateX(0)'; // Muestra la siguiente imagen
+        }
+    </script>
+</body>
+</html>
